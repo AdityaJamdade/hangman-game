@@ -30,6 +30,7 @@ const KEYS = [
 ];
 
 type KeyboardProps = {
+  disabled? : boolean
   activeLetters: string[];
   inactiveLetters: string[];
   addGuessedLetter: (letter: string) => void;
@@ -39,6 +40,7 @@ export function Keyboard({
   activeLetters,
   inactiveLetters,
   addGuessedLetter,
+  disabled = false,
 }: KeyboardProps) {
   return (
     <div
@@ -59,7 +61,7 @@ export function Keyboard({
                         ${isInactive ? styles.inactive : ""}
             `}
             key={key}
-            disabled={isActive || isInactive}
+            disabled={isActive || isInactive || disabled}
           >
             {key}
           </button>
